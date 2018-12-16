@@ -93,7 +93,8 @@ public class HistoryController {
     }
 
     @RequestMapping(path = "/history/{client}/custom/{dataType}")
-    public ModelAndView custom(@PathVariable("client") String client, @RequestParam("dataType") String dataType,
+    public ModelAndView custom(@PathVariable("client") String client,
+                               @PathVariable("dataType") String dataType,
                                @RequestParam("from") String from,
                                @RequestParam("to") String to,
                                @RequestParam("maxResults") int maxResults) throws ParseException
@@ -110,6 +111,7 @@ public class HistoryController {
         {
             return new ModelAndView(NO_HISTORY_VIEW);
         }
+
         Map<String, Object> model = new HashMap<>();
         model.put("data", data.asModel());
         model.put("client", client);
